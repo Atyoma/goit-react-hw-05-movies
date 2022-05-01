@@ -9,7 +9,9 @@ import s from './app.module.css';
 // import api from '../Service/api-service';
 // import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Navigation from './Navigation/Navigation';
+import NotFoundPage from 'Pages/NotFoundPage';
+import Home from 'Pages/Home';
+import MoviesPage from 'Pages/MoviesPage';
 
 export default function App() {
   // const [status, setStatus] = useState('idle');
@@ -73,7 +75,10 @@ export default function App() {
   return (
     <div className={s.app}>
       <Routes>
-        <Route path='/' element={ <Navigation/>}></Route>
+        <Route path='/' element={<Home />}>
+          <Route path='movies' element={<MoviesPage/>}></Route>
+        </Route>
+        <Route path='*' element={ <NotFoundPage/>}/>
       </Routes>
      
       {/* <Searchbar onSubmit={handleFormSubmit} />
