@@ -1,20 +1,21 @@
-function fetchPicture(picture, page) {
-  const BASE_URL = 'https://pixabay.com/api/';
-  const KEY = '25171903-77720667295a00af61497589c';
-  const PerPage = 12;
-  return fetch(
-    `${BASE_URL}?q=${picture}&page=${page}&key=${KEY}&image_type=photo&orientation=horizontal&per_page=${PerPage}`
-  ).then(response => {
-    if (response.ok) {
-      return response.json();
+function fetchMovies() {
+  const BASE_URL = 'https://api.themoviedb.org/3';
+  const KEY = 'b392cdf9c5e216c7de5c7f82b89e6069';
+
+  return fetch(`${BASE_URL}/trending/movie/day?api_key=${KEY}`).then(
+    response => {
+      if (response.ok) {
+        return response.json();
+      }
+      Promise.reject(new Error('Something went wrong!!!'));
     }
-    Promise.reject(new Error('Something went wrong!!!'));
-  });
+  );
 }
 
 const api = {
-  fetchPicture,
-  PerPage: 12,
+  fetchMovies,
 };
 
 export default api;
+
+//

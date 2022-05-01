@@ -1,6 +1,15 @@
 import { NavLink, Outlet } from 'react-router-dom';
+import { useEffect } from 'react';
+import api from '../Service/api-service';
 import s from './Nav.module.css';
 export default function Home() {
+  useEffect(() => {
+    api
+      .fetchMovies()
+      .then(movies => console.log(movies))
+      .catch(error => 'error');
+  }, []);
+
   return (
     <>
       <header>
