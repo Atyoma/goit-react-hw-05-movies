@@ -1,77 +1,82 @@
 //==========================Hook===========================
-
-import { useState, useEffect } from 'react';
+import{Routes, Route} from 'react-router-dom'
+// import { useState, useEffect } from 'react';
 import s from './app.module.css';
-import Searchbar from './Searchbar/Searchbar';
-import ImageGallery from './ImageGallery/ImageGallery';
-import Modal from './Modal/modal';
-import Button from './Button/button';
-import api from '../Service/api-service';
-import { ToastContainer } from 'react-toastify';
+// import Searchbar from './Searchbar/Searchbar';
+// import ImageGallery from './ImageGallery/ImageGallery';
+// import Modal from './Modal/modal';
+// import Button from './Button/button';
+// import api from '../Service/api-service';
+// import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Navigation from './Navigation/Navigation';
 
 export default function App() {
-  const [status, setStatus] = useState('idle');
-  const [page, setPage] = useState(1);
-  const [pictureGallery, setPictureGallery] = useState([]);
-  const [picture, setPicture] = useState(null);
-  const [, setError] = useState(null);
-  const [modal, setModal] = useState(null);
-  const [showModal, setShowModal] = useState(false);
-  const [totalHits, setTotalHits] = useState(null);
+  // const [status, setStatus] = useState('idle');
+  // const [page, setPage] = useState(1);
+  // const [pictureGallery, setPictureGallery] = useState([]);
+  // const [picture, setPicture] = useState(null);
+  // const [, setError] = useState(null);
+  // const [modal, setModal] = useState(null);
+  // const [showModal, setShowModal] = useState(false);
+  // const [totalHits, setTotalHits] = useState(null);
 
-  useEffect(() => {
-    if (!picture) {
-      return;
-    }
-    setStatus('panding');
+  // useEffect(() => {
+  //   if (!picture) {
+  //     return;
+  //   }
+  //   setStatus('panding');
 
-    const queryCondition = picture => {
-      if (page > 1) {
-        setPictureGallery(prevPictureGallery => [
-          ...prevPictureGallery,
-          ...picture.hits,
-        ]);
-      } else {
-        setPictureGallery([...picture.hits]);
-      }
-      setTotalHits(picture.totalHits);
-      setStatus('resolved');
-    };
+  //   const queryCondition = picture => {
+  //     if (page > 1) {
+  //       setPictureGallery(prevPictureGallery => [
+  //         ...prevPictureGallery,
+  //         ...picture.hits,
+  //       ]);
+  //     } else {
+  //       setPictureGallery([...picture.hits]);
+  //     }
+  //     setTotalHits(picture.totalHits);
+  //     setStatus('resolved');
+  //   };
 
-    api
-      .fetchPicture(picture, page)
-      .then(picture => queryCondition(picture))
-      .catch(error => {
-        setError('error');
-        setStatus('rejected');
-      });
-  }, [page, picture]);
+  //   api
+  //     .fetchPicture(picture, page)
+  //     .then(picture => queryCondition(picture))
+  //     .catch(error => {
+  //       setError('error');
+  //       setStatus('rejected');
+  //     });
+  // }, [page, picture]);
 
-  const handleFormSubmit = picture => {
-    setPicture(picture);
-    setPage(1);
-    setPictureGallery([]);
-  };
+  // const handleFormSubmit = picture => {
+  //   setPicture(picture);
+  //   setPage(1);
+  //   setPictureGallery([]);
+  // };
 
-  const loadMore = () => {
-    setPage(prevPage => prevPage + 1);
-  };
+  // const loadMore = () => {
+  //   setPage(prevPage => prevPage + 1);
+  // };
 
-  const openModal = modalImage => {
-    setShowModal(true);
-    setModal(modalImage);
-  };
+  // const openModal = modalImage => {
+  //   setShowModal(true);
+  //   setModal(modalImage);
+  // };
 
-  const closeModal = () => {
-    setShowModal(false);
-  };
+  // const closeModal = () => {
+  //   setShowModal(false);
+  // };
 
-  const balance = totalHits - page * api.PerPage;
+  // const balance = totalHits - page * api.PerPage;
 
   return (
     <div className={s.app}>
-      <Searchbar onSubmit={handleFormSubmit} />
+      <Routes>
+        <Route path='/' element={ <Navigation/>}></Route>
+      </Routes>
+     
+      {/* <Searchbar onSubmit={handleFormSubmit} />
       <ImageGallery
         pictureGallery={pictureGallery}
         status={status}
@@ -80,7 +85,7 @@ export default function App() {
       />
       {balance > 0 && <Button loadMore={loadMore} />}
       {showModal && <Modal onClose={closeModal} modalImage={modal}></Modal>}
-      <ToastContainer autoClose={3000} />
+      <ToastContainer autoClose={3000} /> */}
     </div>
   );
 }
