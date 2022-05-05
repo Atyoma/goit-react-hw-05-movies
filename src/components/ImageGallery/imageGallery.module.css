@@ -1,4 +1,4 @@
-.imageGallery {
+/* .imageGallery {
   display: grid;
   max-width: calc(100vw - 48px);
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -18,4 +18,4 @@
   transform: scale(1.25);
   transition-duration: 1000ms;
   transition-timing-function: linear;
-}
+} */

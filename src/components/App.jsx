@@ -14,63 +14,6 @@ import Home from 'Pages/Home';
 import MoviesPage from 'Pages/MoviesPage';
 
 export default function App() {
-  // const [status, setStatus] = useState('idle');
-  // const [page, setPage] = useState(1);
-  // const [pictureGallery, setPictureGallery] = useState([]);
-  // const [picture, setPicture] = useState(null);
-  // const [, setError] = useState(null);
-  // const [modal, setModal] = useState(null);
-  // const [showModal, setShowModal] = useState(false);
-  // const [totalHits, setTotalHits] = useState(null);
-
-  // useEffect(() => {
-  //   if (!picture) {
-  //     return;
-  //   }
-  //   setStatus('panding');
-
-  //   const queryCondition = picture => {
-  //     if (page > 1) {
-  //       setPictureGallery(prevPictureGallery => [
-  //         ...prevPictureGallery,
-  //         ...picture.hits,
-  //       ]);
-  //     } else {
-  //       setPictureGallery([...picture.hits]);
-  //     }
-  //     setTotalHits(picture.totalHits);
-  //     setStatus('resolved');
-  //   };
-
-  //   api
-  //     .fetchPicture(picture, page)
-  //     .then(picture => queryCondition(picture))
-  //     .catch(error => {
-  //       setError('error');
-  //       setStatus('rejected');
-  //     });
-  // }, [page, picture]);
-
-  // const handleFormSubmit = picture => {
-  //   setPicture(picture);
-  //   setPage(1);
-  //   setPictureGallery([]);
-  // };
-
-  // const loadMore = () => {
-  //   setPage(prevPage => prevPage + 1);
-  // };
-
-  // const openModal = modalImage => {
-  //   setShowModal(true);
-  //   setModal(modalImage);
-  // };
-
-  // const closeModal = () => {
-  //   setShowModal(false);
-  // };
-
-  // const balance = totalHits - page * api.PerPage;
 
   return (
     <div className={s.app}>
@@ -80,17 +23,6 @@ export default function App() {
         </Route>
         <Route path='*' element={ <NotFoundPage/>}/>
       </Routes>
-     
-      {/* <Searchbar onSubmit={handleFormSubmit} />
-      <ImageGallery
-        pictureGallery={pictureGallery}
-        status={status}
-        showModal={showModal}
-        openModal={openModal}
-      />
-      {balance > 0 && <Button loadMore={loadMore} />}
-      {showModal && <Modal onClose={closeModal} modalImage={modal}></Modal>}
-      <ToastContainer autoClose={3000} /> */}
     </div>
   );
 }
