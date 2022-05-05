@@ -1,16 +1,23 @@
-.link {
-  display: inline-block;
-  text-decoration: none;
-  padding: 12px;
-  font-weight: 500;
-  font-size: 18px;
-  color: #2a363b;
-}
-
-/* .selected {
-  color: #2196f3;
-} */
-
 .inputSearch {
   width: 380px;
+}
+
+.nav {
+  margin-bottom: 25px;
+}
+
+.nav a {
+  color: #2a363b;
+  border-radius: 4px;
+  padding: 6px 10px;
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+.nav a.active {
+  color: #2196f3;
+}
+
+.nav a.noactive {
+  font-style: italic;
 }
