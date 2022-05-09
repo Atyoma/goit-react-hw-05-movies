@@ -1,9 +1,35 @@
-.inputSearch {
-  width: 380px;
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  margin-bottom: 20px;
 }
 
-.nav {
-  margin-bottom: 25px;
+ul {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.list {
+  list-style: none;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.inputSearch {
+  width: 320px;
+}
+
+.btnSearch {
+  margin-left: 5px;
+  cursor: pointer;
 }
 
 .nav a {
@@ -18,6 +44,43 @@
   color: #2196f3;
 }
 
-.nav a.noactive {
+/* .nav a.noactive {
   font-style: italic;
+} */
+
+.filmCard {
+  display: flex;
 }
+
+.poster {
+  display: block;
+  max-width: 240px;
+  height: auto;
+}
+
+.info {
+  padding: 0;
+  margin-left: 20px;
+}
+
+.back {
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.actors {
+  display: block;
+  margin-top: 20px;
+}
+
+.cast {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.reviews {
+  display: flex;
+}
+
+/* .actorsList {
+  display: grid;
+} */

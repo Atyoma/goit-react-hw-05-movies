@@ -4,28 +4,41 @@ import{Routes, Route} from 'react-router-dom'
 import s from './app.module.css';
 // import Searchbar from './Searchbar/Searchbar';
 // import ImageGallery from './ImageGallery/ImageGallery';
-// import Modal from './Modal/modal';
-// import Button from './Button/button';
+import Cast from 'components/Cast/Cast'
+import Reviews from 'components/Reviews/Reviews'
 // import api from '../Service/api-service';
 // import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import NotFoundPage from 'Pages/NotFoundPage';
 import Home from 'Pages/Home';
 import MoviesPage from 'Pages/MoviesPage';
+import Navigation from './Navigation/Navigation';
+import MovieDetailsPage from "Pages/MovieDetailsPage"
 
 export default function App() {
 
   return (
     <div className={s.app}>
       <Routes>
-        <Route path='/' element={<Home />}>
-          <Route path='movies' element={<MoviesPage/>}></Route>
+        <Route path='/' element={<Navigation />}>
+          <Route index element={<Home/>}></Route>
+          <Route path='movies' element={<MoviesPage />}></Route>
+          <Route path="movies/:movieId" element={<MovieDetailsPage />}>
+            <Route path="cast" element={<Cast />}></Route>
+            <Route path="reviews" element={<Reviews/>}></Route>
+          </Route>
         </Route>
         <Route path='*' element={ <NotFoundPage/>}/>
       </Routes>
     </div>
   );
 }
+
+// '/movies/:movieId' - компонент <MovieDetailsPage>, страница с детальной информацией о кинофильме.
+// /movies/:movieId/cast - компонент <Cast>, информация о актерском составе. Рендерится на странице <MovieDetailsPage>.
+// /movies/:movieId/reviews - компонент <Reviews>, информация об обзорах. Рендерится на странице <MovieDetailsPage>.
+
+
 
 //=====================Class=======================
 

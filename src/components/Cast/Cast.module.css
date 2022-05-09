@@ -1,0 +1,7 @@
+.actorCard {
+  display: flex;
+}
+
+.actorIcon {
+  max-width: 100px;
+}
