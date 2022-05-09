@@ -3,7 +3,6 @@ import s from 'Pages/Nav.module.css';
 import { useParams, useNavigate } from 'react-router-dom';
 import api from '../Service/api-service';
 import { useState, useEffect } from 'react';
-// import MoviesList from 'components/MoviesList/MoviesList';
 
 export default function MovieDetailsPage() {
   const [moviesInfo, setMoviesInfo] = useState(null);
@@ -13,14 +12,10 @@ export default function MovieDetailsPage() {
 
   useEffect(() => {
     api
-      .fetchMoviesPage(movieId)
-      //   .then(data => {
-      //     console.log(data);
-      //   })
+      .fetchMoviesPage(movieId) //.then(data => {console.log(data)})
       .then(setMoviesInfo)
       .catch(error => 'error');
   }, [movieId]);
-  //   console.log(moviesInfo);
 
   const userScore = 10;
 

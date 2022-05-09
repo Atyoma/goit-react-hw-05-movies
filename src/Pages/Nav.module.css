@@ -24,7 +24,8 @@ ul {
 }
 
 .inputSearch {
-  width: 320px;
+  min-width: 240px;
+  min-height: 18px;
 }
 
 .btnSearch {
@@ -80,7 +81,3 @@ ul {
 .reviews {
   display: flex;
 }
-
-/* .actorsList {
-  display: grid;
-} */

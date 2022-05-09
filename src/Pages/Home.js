@@ -1,9 +1,5 @@
-// import { Outlet } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import api from '../Service/api-service';
-// import s from './Nav.module.css';
-// import Navigation from 'components/Navigation/Navigation';
-// import MoviesList from 'components/MoviesList/MoviesL ist';
 import { Link } from 'react-router-dom';
 export default function Home() {
   const [movies, setMovies] = useState([]);

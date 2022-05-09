@@ -1,9 +1,8 @@
-// import { Outlet } from 'react-router-dom';
-// import s from './Nav.module.css';
-// import Searchbar from 'components/Searchbar/Searchbar';
+import s from './Nav.module.css';
 import { useState, useCallback } from 'react';
 import api from '../Service/api-service';
 import { Link } from 'react-router-dom';
+import { ImSearch } from 'react-icons/im';
 export default function MoviesPage() {
   const [movies, setMovies] = useState(null);
 
@@ -30,8 +29,17 @@ export default function MoviesPage() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <input name="searchInput" />
-        <button>Search</button>
+        <input
+          name="searchInput"
+          className={s.inputSearch}
+          type="text"
+          autoComplete="off"
+          autoFocus
+          placeholder="Search movies..."
+        />
+        <button type="button" className={s.btnSearch}>
+          <ImSearch /> search
+        </button>
       </form>
       <ul>
         {movies
@@ -48,27 +56,4 @@ export default function MoviesPage() {
       </ul>
     </div>
   );
-  // const [query, setQuery] = useState([]);
-
-  // useEffect(() => {
-  //   if (query === []) {
-  //     return;
-  //   }
-  //   api
-  //     .fetchSearch(query)
-  //     .then(({ results }) => {
-  //       console.log(results);
-  //     })
-  //     .catch(error => 'error');
-  // }, [query]);
-
-  // const handleFormSubmit = query => {
-  //   setQuery(query);
-  // };
-  // return (
-  //   <>
-  //     <Searchbar onSubmit={handleFormSubmit} />
-
-  //   </>
-  // );
 }

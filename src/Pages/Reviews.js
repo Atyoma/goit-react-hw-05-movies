@@ -1,4 +1,3 @@
-import s from './Reviews.module.css';
 import { useParams } from 'react-router-dom';
 import api from 'Service/api-service';
 import { useState, useEffect } from 'react';
@@ -15,22 +14,24 @@ export default function Cast() {
       })
       .catch(error => 'error');
   }, [movieId]);
-  console.log(reviewsInfo);
 
   return (
-    <div className={s.actorCard}>
-      <ul>
-        {reviewsInfo ? (
-          reviewsInfo.map(review => (
-            <li key={review.id}>
-              <h3>Author: {review.author}</h3>
-              <p>{review.content}</p>
-            </li>
-          ))
-        ) : (
-          <p>We don`n have any reviews for this movie</p>
-        )}
-      </ul>
-    </div>
+    <>
+      {reviewsInfo && reviewsInfo.length > 0 ? (
+        <ul>
+          {reviewsInfo.map(review => {
+            const { id, author, content } = review;
+            return (
+              <li key={id}>
+                <h3>{author}</h3>
+                <p>{content}</p>
+              </li>
+            );
+          })}
+        </ul>
+      ) : (
+        <p>We don't have any reviews for this movie</p>
+      )}
+    </>
   );
 }

@@ -16,30 +16,30 @@ export default function Cast() {
       })
       .catch(error => 'error');
   }, [movieId]);
-  console.log(actorsInfo);
 
   return (
     <div className={s.actorCard}>
       <ul>
-        {actorsInfo ? (
+        {actorsInfo &&
           actorsInfo.map(actor => (
             <li key={actor.id}>
               {actor.profile_path !== null ? (
                 <img
                   src={`https://image.tmdb.org/t/p/w300/${actor.profile_path}`}
-                          alt={`Foto ${actor.name}`}
-                          className={s.actorIcon}
+                  alt={`Foto ${actor.name}`}
+                  className={s.actorIcon}
                 />
               ) : (
-                <img src={avatarDefault} alt="There is no icon of the actor" className={s.actorIcon} />
+                <img
+                  src={avatarDefault}
+                  alt="There is no icon of the actor"
+                  className={s.actorIcon}
+                />
               )}
               <p>{actor.name}</p>
               <p>Character: {actor.character}</p>
             </li>
-          ))
-        ) : (
-          <p>We don't have any actors for this movie</p>
-        )}
+          ))}
       </ul>
     </div>
   );
