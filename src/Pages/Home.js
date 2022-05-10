@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import api from '../Service/api-service';
 import { Link } from 'react-router-dom';
+import s from './Nav.module.css';
 export default function Home() {
   const [movies, setMovies] = useState([]);
 
@@ -19,7 +20,7 @@ export default function Home() {
       <ul>
         {movies &&
           movies.map(movie => (
-            <li key={movie.id}>
+            <li key={movie.id} className={s.list}>
               <Link to={`movies/${movie.id}`}>{movie.title}</Link>
             </li>
           ))}

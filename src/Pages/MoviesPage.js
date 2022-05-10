@@ -49,7 +49,7 @@ export default function MoviesPage() {
           movies.map(movie => {
             return (
               <li key={movie.id}>
-                <Link to={`/movies/${movie.id}`}>
+                <Link to={`/movies/${movie.id}`} className={s.list}>
                   {movie.title ?? movie.name}
                 </Link>
               </li>

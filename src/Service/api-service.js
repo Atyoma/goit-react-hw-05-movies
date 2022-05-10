@@ -53,7 +53,7 @@ function fetchSearch(query) {
     }
   );
 }
-// `${BASE_URL}/search/movie?query=${querry}&api_key=${API_KEY}`
+
 const api = {
   fetchTrendingMovies,
   fetchMoviesPage,
@@ -63,11 +63,3 @@ const api = {
 };
 
 export default api;
-
-// movie / { movie_id } / credits;
-
-// /trending/get-trending список самых популярных фильмов на сегодня для создания коллекции на главной странице.
-// /search/search-movies поиск кинофильма по ключевому слову на странице фильмов.
-// /movies/get-movie-details запрос полной информации о фильме для страницы кинофильма.
-// /movies/get-movie-credits запрос информации о актёрском составе для страницы кинофильма.
-// /movies/get-movie-reviews запрос обзоров для страницы кинофильма.
