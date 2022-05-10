@@ -2,6 +2,8 @@ import { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import s from './app.module.css';
 import Loader from './Loader/Loader';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Navigation = lazy(() => import ('./Navigation/Navigation'))
 const Home = lazy(() => import('Pages/Home'))
@@ -26,7 +28,8 @@ export default function App() {
         </Route>
         <Route path='*' element={ <NotFoundPage/>}/>
         </Routes>
-        </Suspense>
+      </Suspense>
+      <ToastContainer autoClose={3000} />
     </div>
   );
 }

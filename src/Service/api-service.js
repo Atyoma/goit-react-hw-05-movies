@@ -44,7 +44,7 @@ function fetchReviews(id) {
 }
 
 function fetchSearch(query) {
-  return fetch(`${BASE_URL}/search/movie/?api_key=${KEY}&query=${query}`).then(
+  return fetch(`${BASE_URL}/search/movie?query=${query}&api_key=${KEY}`).then(
     response => {
       if (response.ok) {
         return response.json();
@@ -53,6 +53,7 @@ function fetchSearch(query) {
     }
   );
 }
+// `${BASE_URL}/search/movie?query=${querry}&api_key=${API_KEY}`
 const api = {
   fetchTrendingMovies,
   fetchMoviesPage,
