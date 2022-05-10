@@ -1,19 +1,20 @@
-
-import{Routes, Route} from 'react-router-dom'
+import { lazy, Suspense } from 'react'
+import { Routes, Route } from 'react-router-dom'
 import s from './app.module.css';
-import Cast from 'Pages/Cast/Cast'
-import Reviews from 'Pages/Reviews'
-import 'react-toastify/dist/ReactToastify.css';
-import NotFoundPage from 'Pages/NotFoundPage';
-import Home from 'Pages/Home';
-import MoviesPage from 'Pages/MoviesPage';
-import Navigation from './Navigation/Navigation';
-import MovieDetailsPage from "Pages/MovieDetailsPage"
+import Loader from './Loader/Loader';
 
+const Navigation = lazy(() => import ('./Navigation/Navigation'))
+const Home = lazy(() => import('Pages/Home'))
+const MoviesPage = lazy(() => import('Pages/MoviesPage'))
+const MovieDetailsPage = lazy(() => import('Pages/MovieDetailsPage'))
+const Cast = lazy(() => import('Pages/Cast/Cast'))
+const Reviews = lazy(() => import('Pages/Reviews'))
+const NotFoundPage = lazy(() => import('Pages/NotFoundPage'))
 export default function App() {
 
   return (
     <div className={s.app}>
+      <Suspense fallback={<Loader/>}>
       <Routes>
         <Route path='/' element={<Navigation />}>
           <Route index element={<Home/>}></Route>
@@ -24,7 +25,8 @@ export default function App() {
           </Route>
         </Route>
         <Route path='*' element={ <NotFoundPage/>}/>
-      </Routes>
+        </Routes>
+        </Suspense>
     </div>
   );
 }
