@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/973.1582e6cd.chunk.css","mappings":"AAAA,uBACE,YACF,CAEA,uBACE,eACF","sources":["Pages/Cast/Cast.module.css"],"sourcesContent":[".actorCard {\n  display: flex;\n}\n\n.actorIcon {\n  max-width: 100px;\n}\n"],"names":[],"sourceRoot":""}
