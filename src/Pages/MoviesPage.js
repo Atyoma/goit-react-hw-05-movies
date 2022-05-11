@@ -10,7 +10,7 @@ export default function MoviesPage() {
 
   const getQuery = useCallback(e => {
     const inputQuery = e.currentTarget.elements.searchInput.value;
-    if (inputQuery === '') {
+    if (inputQuery.trim() === '') {
       toast.warning('Please enter search name'); //info    success   warning  error  default
       return;
     }
