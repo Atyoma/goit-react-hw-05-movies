@@ -12,6 +12,7 @@ export default function Home() {
         setMovies(results);
       })
       .catch(error => 'error');
+    // console.log(Location);
   }, []);
 
   return (

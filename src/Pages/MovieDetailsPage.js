@@ -3,12 +3,17 @@ import s from 'Pages/Nav.module.css';
 import { useParams, useNavigate } from 'react-router-dom';
 import api from '../Service/api-service';
 import { useState, useEffect } from 'react';
+import { HiArrowNarrowLeft } from 'react-icons/hi';
 
 export default function MovieDetailsPage() {
   const [moviesInfo, setMoviesInfo] = useState(null);
+
   const { movieId } = useParams();
   const navigate = useNavigate();
-  const closeDetailsPage = () => navigate('/');
+  // const location = useLocation();
+  const backLinkMovies = () => {
+    navigate(-1);
+  };
 
   useEffect(() => {
     api
@@ -21,8 +26,9 @@ export default function MovieDetailsPage() {
 
   return (
     <>
-      <button type="button" className={s.back} onClick={closeDetailsPage}>
-        Go Home
+      <button type="button" className={s.back} onClick={backLinkMovies}>
+        <HiArrowNarrowLeft />
+        Go back
       </button>
       {moviesInfo && (
         <>
