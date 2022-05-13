@@ -1,0 +1,9 @@
+.inputSearch {
+  min-width: 240px;
+  min-height: 18px;
+}
+
+.btnSearch {
+  margin-left: 5px;
+  cursor: pointer;
+}

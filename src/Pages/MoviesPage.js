@@ -13,7 +13,7 @@ function MoviesPage() {
 
   const handleFormSubmit = searchQuery => {
     setSearchQuery(searchQuery);
-    setSearchParams({ query: searchQuery });
+    setSearchParams({ query: searchQuery.trim() });
     setMovies([]);
   };
 

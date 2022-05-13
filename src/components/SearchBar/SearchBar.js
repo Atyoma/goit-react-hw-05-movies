@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import s from '../../Pages/Nav.module.css';
+import s from './searchBar.module.css';
 import { ImSearch } from 'react-icons/im';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -33,10 +33,7 @@ function Searchbar({ onSubmit }) {
         onChange={handleInputChange}
       />
       <button type="submit" className={s.btnSearch}>
-        <span>
-          {' '}
-          <ImSearch /> search
-        </span>
+        <ImSearch /> search
       </button>
     </form>
   );

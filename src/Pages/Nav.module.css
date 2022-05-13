@@ -24,16 +24,6 @@ ul {
   text-decoration: none;
 }
 
-.inputSearch {
-  min-width: 240px;
-  min-height: 18px;
-}
-
-.btnSearch {
-  margin-left: 5px;
-  cursor: pointer;
-}
-
 .nav a {
   color: #2a363b;
   border-radius: 4px;
