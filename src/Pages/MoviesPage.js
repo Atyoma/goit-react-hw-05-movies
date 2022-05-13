@@ -1,78 +1,50 @@
-import s from './Nav.module.css';
-import { useState, useCallback } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useSearchParams, useLocation } from 'react-router-dom';
+import Searchbar from '../components/SearchBar/SearchBar';
 import api from '../Service/api-service';
-import { Link } from 'react-router-dom';
-import { ImSearch } from 'react-icons/im';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-// import { HiArrowNarrowLeft } from 'react-icons/hi';
 
-export default function MoviesPage() {
-  const [movies, setMovies] = useState(null);
-  // const [currrentLocation, setCurrentLocation] = useState('');
-  const [, setSearchParams] = useSearchParams();
-  // const location = useLocation();
-  // const navigate = useNavigate();
-  // const backLinkMovies = () => navigate(`/movies${location.search}`);
-  // export{ backLinkMovies }
-  const getQuery = useCallback(
-    e => {
-      const inputQuery = e.currentTarget.elements.searchInput.value;
-      if (inputQuery.trim() === '') {
-        toast.warning('Please enter search name');
-        return;
-      }
-      setSearchParams({ query: inputQuery.trim() });
-      api
-        .fetchSearch(inputQuery)
-        .then(({ results }) => {
-          setMovies(results);
-        })
-        .catch(error => 'error');
-      // console.log(location);
-    },
-    [setSearchParams]
+function MoviesPage() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchQuery, setSearchQuery] = useState(
+    searchParams.get('query') ?? ''
   );
+  const [movies, setMovies] = useState([]);
+  const location = useLocation();
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    getQuery(e);
-    setMovies('');
-    // setCurrentString(location);
-
-    // const order = new URLSearchParams(location.search).get('query');
-    // console.log(order);
+  const handleFormSubmit = searchQuery => {
+    setSearchQuery(searchQuery);
+    setSearchParams({ query: searchQuery });
+    setMovies([]);
   };
 
-  return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          name="searchInput"
-          className={s.inputSearch}
-          type="text"
-          autoComplete="off"
-          autoFocus
-          placeholder="Search movies..."
-        />
-        <button className={s.btnSearch}>
-          <ImSearch /> search
-        </button>
-      </form>
+  useEffect(() => {
+    if (!searchQuery) {
+      return;
+    }
+    api
+      .fetchSearch(searchQuery)
+      .then(({ results }) => {
+        setMovies(results);
+      })
+      .catch(error => 'error');
+  }, [searchQuery]);
 
-      <ul>
-        {movies &&
-          movies.map(movie => {
-            return (
-              <li key={movie.id}>
-                <Link to={`/movies/${movie.id}`} className={s.list}>
-                  {movie.title ?? movie.name}
-                </Link>
-              </li>
-            );
-          })}
-      </ul>
-    </div>
+  return (
+    <>
+      <Searchbar onSubmit={handleFormSubmit} />
+      {movies && (
+        <ul>
+          {movies.map(movie => (
+            <li key={movie.id}>
+              <Link to={`${movie.id}`} state={{ from: location }}>
+                {movie.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
+    </>
   );
 }
+
+export default MoviesPage;

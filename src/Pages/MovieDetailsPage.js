@@ -1,16 +1,14 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useParams, useNavigate } from 'react-router-dom';
 import s from 'Pages/Nav.module.css';
-import { useParams, useNavigate } from 'react-router-dom';
 import api from '../Service/api-service';
 import { useState, useEffect } from 'react';
 import { HiArrowNarrowLeft } from 'react-icons/hi';
 
-export default function MovieDetailsPage() {
+export default function MovieDetailsPage({ handleSubmit }) {
   const [moviesInfo, setMoviesInfo] = useState(null);
-
   const { movieId } = useParams();
   const navigate = useNavigate();
-  // const location = useLocation();
+
   const backLinkMovies = () => {
     navigate(-1);
   };
