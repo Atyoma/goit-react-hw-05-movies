@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useSearchParams, useLocation } from 'react-router-dom';
 import Searchbar from '../components/SearchBar/SearchBar';
 import api from '../Service/api-service';
+import s from '../Pages/Nav.module.css';
 
 function MoviesPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -35,7 +36,7 @@ function MoviesPage() {
       {movies && (
         <ul>
           {movies.map(movie => (
-            <li key={movie.id}>
+            <li key={movie.id} className={s.list}>
               <Link to={`${movie.id}`} state={{ from: location }}>
                 {movie.title}
               </Link>

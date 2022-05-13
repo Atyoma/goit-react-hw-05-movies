@@ -16,12 +16,12 @@ ul {
   list-style: none;
 }
 
-.list {
-  margin-bottom: 5px;
+a {
+  text-decoration: none;
 }
 
-.link {
-  text-decoration: none;
+.list {
+  margin-bottom: 5px;
 }
 
 .nav a {
